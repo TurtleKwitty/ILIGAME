@@ -4,12 +4,12 @@ A "fantasy console" that exists.
 
 ## Goals
 
-The goal of ILIGAME is to be both a fantasy console and a physical small form factor portable game console reminiscent of the game gear et al. To that end the project is seperated in three parts: [the engine (this repo)][1], [the implementation for the physical console][2], and the [PC implementation][3] to come later.
+The goal of ILIGAME is to be both a fantasy console and a physical small form factor portable game console reminiscent of the game gear et al. To that end the project is seperated in three parts: [the engine (this repo)][1], [the implementation for the physical console][2], and the [PC implementation][3].
 
 The aim of the project is to learn more about the physical side of technology while having fun developing games in the cozy niche of fantasy consoles.
 
 [1]: https://github.com/TurtleKwitty/ILIGAME
-[2]: https://github.com/TurtleKwitty/ILIGAME-PICO
+[2]: https://github.com/TurtleKwitty/ILIGAME-PHYSICAL
 [3]: https://github.com/TurtleKwitty/ILIGAME-PC
 
 ## Overview
