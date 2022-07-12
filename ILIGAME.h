@@ -74,7 +74,7 @@ namespace ILIGAME
         virtual ~VM();
 
         virtual int run() = 0;
-        virtual void flip() = 0;
+        virtual void flip();
 
         void resetPallette();
         void resetFont();

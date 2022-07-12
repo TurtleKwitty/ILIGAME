@@ -338,10 +338,17 @@ void ILIGAME::VM::init(){
 	*(int*)gameMemory = 0;
 }
 
+void ILIGAME::VM::flip(){
+	//Move mouseActions to last frame
+	mouseActions = (mouseActions << 4) | (mouseActions & 0b00001111);
+}
+
 bool ILIGAME::VM::tickUpdate()
 {
-	*(int*)gameMemory += 1;
-	sprintf(gameMemory+4, "hello world!\nmousex: %u\nmousey: %u\nmouseactions: %u %u %u", mousePos.x, mousePos.y, (mouseActions & MouseActions::LEFT_CLICK), (mouseActions & MouseActions::RIGHT_CLICK), (mouseActions & MouseActions::MIDDLE_CLICK));
+	if((mouseActions & (ILIGAME::MouseActions::LEFT_CLICK | ILIGAME::MouseActions::LEFT_CLICK_LAST)) == ILIGAME::MouseActions::LEFT_CLICK_LAST){
+		*(int*)gameMemory += 1;
+	}
+	sprintf(gameMemory+4, "hello world!\nmouse clicks: %u", *(int *)gameMemory);
 	return false;
 }
 
