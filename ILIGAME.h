@@ -25,6 +25,24 @@ namespace ILIGAME
         FontChar charMasks[256];     // 1bpp 8x8 image data
     };
 
+    struct Point
+    {
+    	unsigned char x;
+    	unsigned char y;
+    };
+
+    enum MouseActions
+    {
+    	LEFT_CLICK = 1,
+    	RIGHT_CLICK = 2,
+    	MIDDLE_CLICK = 4,
+    	WHEEL_UP = 8,
+    	LEFT_CLICK_LAST = 16,
+    	RIGHT_CLICK_LAST = 32,
+    	MIDDLE_CLICK_LAST = 64,
+		WHEEL_DOWN = 128,
+    };
+
     class VM
     {
     protected:
@@ -46,6 +64,8 @@ namespace ILIGAME
                               {255, 119, 168},
                               {255, 204, 170}};
         Font font;
+		Point mousePos = {0,0};
+		char mouseActions = 0;
 
         char *gameMemory;
 
@@ -59,6 +79,7 @@ namespace ILIGAME
         void resetPallette();
         void resetFont();
 
+		void init();
         bool tickUpdate();
         bool tickDraw();
 
@@ -66,7 +87,7 @@ namespace ILIGAME
         void drawPixel(unsigned char x, unsigned char y, unsigned char color);
         void drawRect(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned char color, bool fill);
         void drawRectRel(unsigned char x, unsigned char y, unsigned char w, unsigned char h, unsigned char color, bool fill);
-        void drawText(char *text, unsigned char x, unsigned char y, unsigned char color);
+        void drawText(const char *text, unsigned char x, unsigned char y, unsigned char color);
     };
 }
 #endif
