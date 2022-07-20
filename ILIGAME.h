@@ -67,7 +67,7 @@ namespace ILIGAME
 		Point mousePos = {0,0};
 		char mouseActions = 0;
 
-        char *gameMemory;
+        char* gameMemory;
 
     public:
         VM();
@@ -76,17 +76,22 @@ namespace ILIGAME
         virtual int run() = 0;
         virtual void flip();
 
+		virtual unsigned int readFile(const char* filePath, char*& fileData) = 0;
+		virtual bool writeFile(const char* filePath, void* fileData, unsigned int fileSize) = 0;
+
         void resetPallette();
         void resetFont();
 
-		void init();
+		bool tickInit();
         bool tickUpdate();
         bool tickDraw();
+        bool tickClose();
 
         void clearScreen(unsigned char color);
         void drawPixel(unsigned char x, unsigned char y, unsigned char color);
         void drawRect(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned char color, bool fill);
         void drawRectRel(unsigned char x, unsigned char y, unsigned char w, unsigned char h, unsigned char color, bool fill);
+        void drawText(const char text, unsigned char x, unsigned char y, unsigned char color);
         void drawText(const char *text, unsigned char x, unsigned char y, unsigned char color);
     };
 }
